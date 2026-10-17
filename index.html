@@ -822,7 +822,7 @@ footer {
 }
 
 .profile-stack {
-  padding: 14px 24px;
+  padding: 4px 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
@@ -830,7 +830,7 @@ footer {
 }
 
 .profile-stack span {
-  padding: 5px 9px;
+  padding: 14px 9px;
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--card);
@@ -1508,14 +1508,19 @@ const navLinks = document.getElementById("navLinks");
 const navItems = [...document.querySelectorAll(".nav-links a")];
 const pageSections = [...document.querySelectorAll("main section[id]")];
 
-// Restaurar el tema guardado.
+// Light por defecto; respetar el tema elegido previamente.
 try {
   const savedTheme = localStorage.getItem("portfolio-theme");
 
-  if (savedTheme === "light" || savedTheme === "dark") {
-    root.setAttribute("data-theme", savedTheme);
-  }
-} catch (error) {}
+  root.setAttribute(
+    "data-theme",
+    savedTheme === "dark" || savedTheme === "light"
+      ? savedTheme
+      : "light"
+  );
+} catch (error) {
+  root.setAttribute("data-theme", "light");
+}
 
 function updateThemeButton() {
   const light = root.getAttribute("data-theme") === "light";
