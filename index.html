@@ -923,6 +923,129 @@ nav.container {
 }
 
 
+/* NAVEGACIÓN RESPONSIVE */
+
+nav.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.theme,
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.theme {
+  font-size: 20px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 20px;
+}
+
+/* TABLET Y PANTALLAS PEQUEÑAS */
+@media (max-width: 1000px) {
+  nav.container {
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-links a {
+    padding: 8px 5px;
+    font-size: 10px;
+  }
+}
+
+/* MÓVIL */
+@media (max-width: 760px) {
+  nav.container {
+    position: relative;
+    min-height: 68px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .nav-right {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    display: none;
+    order: 3;
+    flex: 0 0 100%;
+    width: 100%;
+    margin: 10px 0 0;
+    padding: 10px 0 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+
+  .nav-links a.active::after {
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+    right: auto;
+    width: 3px;
+    height: auto;
+  }
+}
+
+
 </style>
 </head>
 
@@ -931,31 +1054,35 @@ nav.container {
 <header>
 
 <nav class="container">
-  <a class="logo" href="#inicio" aria-label="Ir al inicio">ELOUHICHI<span>.</span></a>
+  <a class="logo" href="#inicio" aria-label="Ir al inicio">
+    ELOUHICHI<span>.</span>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#inicio" class="active">Inicio</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#tecnologias">Tecnologías</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#formacion">Formación</a>
+    <a href="#competencias">Competencias</a>
+    <a href="#idiomas">Idiomas</a>
+    <a href="#contacto">Contacto</a>
+  </div>
 
   <div class="nav-right">
-    <div class="nav-links" id="navLinks">
-      <a href="#inicio" class="active">Inicio</a>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#tecnologias">Tecnologías</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#formacion">Formación</a>
-      <a href="#competencias">Competencias</a>
-      <a href="#idiomas">Idiomas</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-
     <button class="theme" id="themeBtn" type="button"
-      aria-label="Cambiar a tema claro" title="Cambiar tema">
+      aria-label="Cambiar tema" title="Cambiar tema">
       ☀
     </button>
 
     <button class="menu-toggle" id="menuToggle" type="button"
-      aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">☰</button>
+      aria-label="Abrir menú" aria-expanded="false"
+      aria-controls="navLinks">
+      ☰
+    </button>
   </div>
 </nav>
-
 </header>
 
 <main>
